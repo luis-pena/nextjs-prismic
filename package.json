@@ -1,0 +1,21 @@
+{
+  "name": "nextjs-prismic",
+  "version": "1.0.0",
+  "description": "A Next JS application with Prismic installed and ready to go",
+  "main": "index.js",
+  "author": "Luis Pena",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "next": "^6.1.2",
+    "prismic-javascript": "^1.5.0",
+    "prismic-reactjs": "^0.3.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  }
+}
