@@ -6,5 +6,5 @@ function linkResolver(doc) {
 }
 
 module.exports = {
-  linkResolver
+  linkResolver,
 };

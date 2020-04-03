@@ -7,27 +7,30 @@ import linkResolver from "../helpers";
 // Here we are reusing our layout again
 import DefaultLayout from "../layouts";
 
-export default class BlogPost extends Component {
-  static async getInitialProps(context) {
-    // we get the slug of the post so that we can
-    // query the API with it
-    const { slug } = context.query;
-    const response = await getBlogPostAPI(slug);
-    return {
-      post: response
-    };
-  }
+function BlogPost({ post }) {
+  const { title, body } = post.data;
 
-  render() {
-    const post = this.props.post.data;
-    return (
-      <DefaultLayout>
-        <article>
-          <h1>{post.title.length ? post.title[0].text : ""}</h1>
-          {/* Here we pass our rich text field to Prismics RichText renderer, along with our linkResolver */}
-          {RichText.render(post.body, linkResolver)}
-        </article>
-      </DefaultLayout>
-    );
-  }
+  return (
+    <DefaultLayout>
+      <article>
+        <h1>{title.length ? title[0].text : ""}</h1>
+        {/* Here we pass our rich text field to Prismics RichText renderer, along with our linkResolver */}
+        {RichText.render(body, linkResolver)}
+      </article>
+    </DefaultLayout>
+  );
 }
+
+BlogPost.getInitialProps = async (context) => {
+  // we get the slug of the post so that we can
+  // query the API with it
+  console.log("CONTEXT", context);
+
+  const { slug } = context.query;
+  const response = await getBlogPostAPI(slug);
+  return {
+    post: response,
+  };
+};
+
+export default BlogPost;

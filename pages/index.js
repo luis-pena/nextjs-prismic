@@ -31,7 +31,7 @@ Index.getInitialProps = async () => {
   // Here we call the API and request 5 documents
   const response = await getBlogPostsAPI({ pageSize: 5 });
   return {
-    posts: response.results
+    posts: response.results,
   };
 };
 

@@ -9,21 +9,21 @@ app
   .then(() => {
     const server = express();
     // Here we are handling our custom route, this
-    // now work for server side rendering
+    // now works for server side rendering
     server.get("/blog/:slug", (req, res) => {
-      const nextJsPage = "/blogPost";
+      const nextJsPage = "/blog_post";
       const queryParams = { slug: req.params.slug };
       app.render(req, res, nextJsPage, queryParams);
     });
 
     server.get("*", (req, res) => handle(req, res));
 
-    server.listen(3000, err => {
+    server.listen(3000, (err) => {
       if (err) throw err;
       console.log("> Ready http://localhost:3000 <");
     });
   })
-  .catch(ex => {
+  .catch((ex) => {
     console.error(ex.stack);
     process.exit(1);
   });
